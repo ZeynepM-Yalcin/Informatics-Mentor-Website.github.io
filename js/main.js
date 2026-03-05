@@ -1,12 +1,12 @@
-/* ================================================================
-   INFORMATICS MENTOR LTD — Main JavaScript
-   ================================================================ */
+
+   //INFORMATICS MENTOR LTD — Main JavaScript
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ============================================================
+
   // SCROLL REVEAL (Intersection Observer)
-  // ============================================================
+  
 
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ============================================================
+
   // ANIMATED COUNTERS
-  // ============================================================
+
 
   const counterObserver = new IntersectionObserver(
     (entries) => {
@@ -62,9 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.count').forEach((el) => counterObserver.observe(el));
 
 
-  // ============================================================
   // SMOOTH SCROLL FOR ANCHOR LINKS
-  // ============================================================
+
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
@@ -76,10 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
-  // ============================================================
   // NAV SCROLL EFFECT
-  // ============================================================
 
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
@@ -88,10 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : 'rgba(7,10,13,0.8)';
   });
 
-
-  // ============================================================
   // MOBILE NAV
-  // ============================================================
 
   const mobileNav = document.getElementById('mobileNav');
   const hamburger = document.querySelector('.nav-hamburger');
@@ -112,9 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ============================================================
   // SERVICE CARD EXPAND / COLLAPSE
-  // ============================================================
+
 
   document.querySelectorAll('.service-expand-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -122,5 +114,30 @@ document.addEventListener('DOMContentLoaded', () => {
       card.classList.toggle('expanded');
     });
   });
+
+
+
+  // CONTACT FORM — mailto handler
+
+
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      const firstName = (document.getElementById('firstName').value || '').trim();
+      const lastName  = (document.getElementById('lastName').value || '').trim();
+      const email     = (document.getElementById('email').value || '').trim();
+      const service   = (document.getElementById('service').value || '').trim();
+      const message   = (document.getElementById('message').value || '').trim();
+
+      const subject = encodeURIComponent('Website Enquiry — ' + (service || 'General'));
+      const body = encodeURIComponent(
+        'Name: ' + firstName + ' ' + lastName + '\n' +
+        'Email: ' + email + '\n' +
+        'Service: ' + service + '\n\n' +
+        message
+      );
+      window.location.href = 'mailto:info@informaticsmentor.com?subject=' + subject + '&body=' + body;
+    });
+  }
 
 });
