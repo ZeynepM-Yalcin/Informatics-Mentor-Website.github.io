@@ -628,25 +628,24 @@ nav {
    CONTACT
    ================================================================ */
 .contact { padding: 120px 0; position: relative; }
-.contact-inner {
-  max-width: 720px;
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
 }
-.contact-inner .section-title { margin-bottom: 24px; }
-.contact-inner > p {
-  font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 48px;
-  max-width: 520px;
+.contact-info .section-title { margin-bottom: 24px; }
+.contact-info > p {
+  font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 40px;
 }
-.contact-methods { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 48px; }
+.contact-methods { display: flex; flex-direction: column; gap: 20px; }
 .contact-method {
   display: flex; align-items: center; gap: 16px;
-  padding: 24px 28px; border: 1px solid var(--border);
+  padding: 20px; border: 1px solid var(--border);
   border-radius: 10px; background: var(--surface);
   transition: border-color 0.3s, background 0.3s;
-  flex: 1; min-width: 260px;
 }
 .contact-method:hover { border-color: var(--border-2); background: var(--surface-2); }
 .contact-method-icon {
-  width: 48px; height: 48px; border-radius: 10px;
+  width: 44px; height: 44px; border-radius: 10px;
   background: rgba(247,148,29,0.08); border: 1px solid rgba(247,148,29,0.15);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
@@ -655,7 +654,55 @@ nav {
   font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 4px;
 }
-.contact-method-value { font-size: 15px; color: var(--white); font-weight: 500; }
+.contact-method-value { font-size: 14px; color: var(--white); font-weight: 500; }
+
+/* Contact form */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 40px;
+}
+.contact-form-title {
+  font-family: 'Syne', sans-serif; font-size: 20px;
+  font-weight: 700; margin-bottom: 8px;
+}
+.contact-form-sub {
+  font-size: 13px; color: var(--text-muted); margin-bottom: 28px;
+}
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;
+}
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block; font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 8px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; background: var(--surface-2);
+  border: 1px solid var(--border-2); border-radius: 8px;
+  padding: 12px 16px; color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: rgba(247,148,29,0.4);
+  box-shadow: 0 0 0 3px rgba(247,148,29,0.08);
+}
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235a6370' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-submit { width: 100%; margin-top: 8px; justify-content: center; text-align: center; }
 
 
 /* ================================================================
@@ -752,6 +799,8 @@ footer {
   .projects-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-visual { min-height: 300px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
   .contact-methods { flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
